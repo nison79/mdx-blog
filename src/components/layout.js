@@ -22,6 +22,9 @@ const PageContainer = styled.div`
 
 const Container = styled.main`
   flex-grow:1;
+  h1 {
+    text-align:center;
+  }
   /* margin-top:97px; */
 `
 
