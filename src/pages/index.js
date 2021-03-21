@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link, useStaticQuery ,graphql } from "gatsby"
-import BackgroundImage from 'gatsby-background-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 
 import Layout from "../components/layout"
@@ -11,23 +11,19 @@ const IndexPage = () => {
     query {
       file(relativePath: {eq : "bwelli.jpg"}) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData( width:400 , layout: FULL_WIDTH , quality: 100  )
         }
       }
     }
   `)
 
-
-
   return (
     <Layout>
     <SEO title="Home" />
-    <BackgroundImage 
+    <GatsbyImage 
       tag="header"
-      fluid={data.file.childImageSharp.fluid}
-      style={{ height: "50vh"}}
+      image={data.file.childImageSharp.gatsbyImageData}
+      alt = " girl in the beach "
     />
     <p>
       <Link to="/my-first-post/">Go to posts</Link> <br />
